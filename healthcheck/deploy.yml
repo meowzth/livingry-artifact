@@ -1,0 +1,43 @@
+---
+- name: Deploy healthcheck script and set up cron job
+  hosts: sshserver
+  become: yes
+  vars:
+    script_local_path: './checker.py'
+    script_remote_path: '/healthcheck/checker.py'
+    cron_minute: "*/5"
+    cron_hour: "*"
+    cron_day: "*"
+    cron_month: "*"
+    cron_weekday: "*"
+
+  tasks:
+    - name: Example task to show connection
+      ansible.builtin.ping:
+
+    - name: Ensure the healthcheck directory exists
+      ansible.builtin.file:
+        path: "/healthcheck"
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copy healthcheck script to the remote server
+      ansible.builtin.copy:
+        src: "{{ script_local_path }}"
+        dest: "{{ script_remote_path }}"
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Set up cron job to run healthcheck script
+      ansible.builtin.cron:
+        name: "Run healthcheck script"
+        user: root
+        minute: "{{ cron_minute }}"
+        hour: "{{ cron_hour }}"
+        day: "{{ cron_day }}"
+        month: "{{ cron_month }}"
+        weekday: "{{ cron_weekday }}"
+        job: "/usr/bin/python3 {{ script_remote_path }}"
