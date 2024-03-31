@@ -2,7 +2,7 @@ from pizdec import Pizdec
 
 CONFIG = {
     "installation_id": "LIVINGRY ARTIFACT",
-    "ip": "192.168.1.70",
+    "ip": "192.168.1.73",
     "api_key": "TAW4NdoM1J79P22r9tfPkspouUaS/jLo3/SUYQ9pvnDQtongYMbMmJuj86JCOpk0hjVH0UhIEGQmECPo4KxytvAYNeq7dBNy91Q3BLkPlZ0XlDj/yilb7znLlYfkiAWsJDJndzUgy+VoxwGJxgTUn3WoU386yBAZTeYcg7rrcHE=",
     "input": "cb7c9727-15ec-464f-be9c-a06d5e7d1ea0",
     "outputs": [
