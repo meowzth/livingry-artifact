@@ -18,7 +18,13 @@ class Checker:
         )
 
     def check(self):
-        input_id = "cb7c9727-15ec-464f-be9c-a06d5e7d1ea0"
+
+        # SH4TX
+        # dea1a4ca-c432-454a-a6dd-9f862fb4c569
+        # SCD30
+        # cb7c9727-15ec-464f-be9c-a06d5e7d1ea0
+
+        input_id = "dea1a4ca-c432-454a-a6dd-9f862fb4c569"
         endpoint = f"inputs/{input_id}/force-measurement"
         url = f"https://{self.ip}/api/{endpoint}"
         response = requests.post(url=url, headers=self.headers, verify=False)
